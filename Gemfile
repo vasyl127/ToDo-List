@@ -44,6 +44,7 @@ gem "bootsnap", require: false
 gem 'devise'
 gem 'pry', '~> 0.13.1'
 gem 'pg'
+gem 'telegram-bot-ruby'
 
 
 # Use Sass to process CSS

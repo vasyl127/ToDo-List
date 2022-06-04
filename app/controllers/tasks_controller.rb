@@ -22,10 +22,10 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = current_user.tasks.new(task_params)
+    @task = ::TaskOperation::Create.new(current_user_id: current_user.id, task_params: task_params).task
 
     respond_to do |format|
-      if @task.save
+      if @task.errors.empty?
         format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else

@@ -1,22 +1,21 @@
   module TaskOperation
     class Create
-      def initialize(task_params)
-        @task = Task.new(task_params)
+      attr_reader :task
+
+      def initialize(params)
+        @task = find_user(params).tasks.new(params[:task_params])
+
         create_task
       end
 
       def create_task
         @task.save
+      end
 
-          # respond_to do |format|
-        #   if @task.save
-        #     format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
-        #     format.json { render :show, status: :created, location: @task }
-        #   else
-        #     format.html { render :new, status: :unprocessable_entity }
-        #     format.json { render json: @task.errors, status: :unprocessable_entity }
-        #   end
-        # end
+      private
+
+      def find_user(params)
+        User.find_by(telegram_id: params[:telegram_id]) || User.find_by_id(params[:current_user_id])
       end
     end
   end
