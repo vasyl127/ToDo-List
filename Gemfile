@@ -45,6 +45,7 @@ gem 'devise'
 gem 'pry', '~> 0.13.1'
 gem 'pg'
 gem 'telegram-bot-ruby'
+gem 'rails-i18n'
 
 
 # Use Sass to process CSS

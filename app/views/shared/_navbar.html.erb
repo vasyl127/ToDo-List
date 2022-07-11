@@ -13,6 +13,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <% I18n.available_locales.each do |locale| %>
+                  <% if I18n.locale != locale %>
+                    <%= link_to t(locale), root_path(locale: locale), class: 'btn btn-outline-warning' %>
+                  <% end %>
+                <% end %>
+              </li>
               <% if user_signed_in? %>
                 <%= link_to current_user.email, destroy_user_session_path, class: 'btn btn-outline-warning' %>
               <% else %>

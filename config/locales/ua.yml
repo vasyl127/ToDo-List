@@ -1,0 +1,12 @@
+ua:
+  activerecord:
+    attributes:
+      task:
+        name: "Ім'я"
+        text: Текст
+    models:
+      task: Задача
+  pages:
+    home:
+      title: 'Домашня сторінка'
+      tasks: Задачі

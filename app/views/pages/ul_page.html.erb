@@ -1,0 +1,6 @@
+<h1> Сторінка для Уляни </h1>
+<hr>
+
+<% @tasks.each do |task|%>
+  <%= render "task", task: task %>
+<% end %>

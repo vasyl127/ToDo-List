@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h3 class="card-title"><%= task.name %></h3>
+    <p class="card-text">
+    <big><%= task.text %></big>
+    </p>
+    <p class="card-subtitle mb-2 text-muted">
+    <small><%= task.created_at.year %></small>
+    </p>
+    <%= link_to 'Редагувати', edit_task_path(task), class: "btn btn-outline-info" %>
+    <%= link_to 'Видалити', task, method: :delete, class: "btn btn-outline-danger" %>
+  </div>
+</div> 
+<br>

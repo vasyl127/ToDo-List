@@ -1,5 +1,6 @@
 require File.expand_path('../config/environment', __dir__)
 require 'telegram/bot'
+TOKEN = '5414064946:AAF22EGuVkIsSOn9ybY2t45H4yul8cq1qKY'.freeze
 
 include ::TelegramBot::Authorizable
 include ::TelegramBot::Operations::CreateTask
