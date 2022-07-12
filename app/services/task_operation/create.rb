@@ -3,13 +3,7 @@
       attr_reader :task
 
       def initialize(params)
-        @task = find_user(params).tasks.new(params[:task_params])
-
-        create_task
-      end
-
-      def create_task
-        @task.save
+        @task = find_user(params).tasks.create(params[:task_params])
       end
 
       private

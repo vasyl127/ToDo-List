@@ -10,3 +10,26 @@ en:
     home:
       title: 'Home screen'
       tasks: Tasks
+  telegram:
+    buttons:
+      create_project: '✅ Add Project'
+      projects_list: '📑 Projects list'
+      create_cost: '✅ Add Cost'
+      share_project: '🌐 Share'
+      delete_project: '🗑️ Delete Project'
+      home: '🏠 Home'
+    errors:
+      projects_not_found: "Can't found projects!"
+      project_uniq: Project name must be uniq
+    commands:
+      invalid: Commands is invalid
+    messages:
+      home: It is home screen
+      something: Something went wrong!
+      projects_list: Project list
+      fill_project_name: Please enter a project name
+      fill_cost_name: Please enter a cost name, use ':' for price. Example 'Silpo:1400'
+      project_created: Project succefuly created!
+      cost_created: Cost succefuly created!
+      projects_not_found: "Can't found projects!"
+      total: Total
