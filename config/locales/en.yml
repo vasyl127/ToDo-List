@@ -19,7 +19,7 @@ en:
       delete_project: '🗑️ Delete Project'
       home: '🏠 Home'
     errors:
-      projects_not_found: "Can't found projects!"
+      projects_not_found: Can't found projects! You can add new project
       project_uniq: Project name must be uniq
     commands:
       invalid: Commands is invalid
@@ -31,6 +31,5 @@ en:
       fill_cost_name: Please enter a cost name, use ':' for price. Example 'Silpo:1400'
       project_created: Project succefuly created!
       cost_created: Cost succefuly created!
-      projects_not_found: Can't found projects! You can add new project
       delete_project: Project has been delete!
       total: Total

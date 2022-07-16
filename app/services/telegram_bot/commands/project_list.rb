@@ -33,9 +33,12 @@ module TelegramBot
         value = { keyboard: keyboard.in_project_keyboard }
         steps_controller.next_step
         project = search_project
-        return value[:text] = formated_project(project, search_costs) if project.present?
+        value[:text] = if project.present?
+                         formated_project(project, search_costs)
+                       else
+                         errors.add_errors(project_absent)
+                       end
 
-        value[:text] = errors.add_errors(project_absent)
         value
       end
 

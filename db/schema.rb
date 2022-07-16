@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_16_065532) do
 
   create_table "costs", force: :cascade do |t|
     t.string "name"
-    t.string "title", default: "0"
+    t.integer "title", default: 0
     t.string "deleted_at"
     t.string "user_created"
     t.integer "project_id"
