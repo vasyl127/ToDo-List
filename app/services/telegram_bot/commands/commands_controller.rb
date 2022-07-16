@@ -65,7 +65,8 @@ module TelegramBot
       end
 
       def share_project
-        start
+        steps_controller.start_share_project if it_is_command?
+        ::TelegramBot::Commands::ShareProject.new(params).answer
       end
 
       def it_is_command?

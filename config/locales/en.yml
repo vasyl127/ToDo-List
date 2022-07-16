@@ -27,6 +27,7 @@ en:
       home: It is home screen
       something: Something went wrong!
       projects_list: Project list
+      share_project: Succefuly share project with
       fill_project_name: Please enter a project name
       fill_cost_name: Please enter a cost name, use ':' for price. Example 'Silpo:1400'
       project_created: Project succefuly created!
