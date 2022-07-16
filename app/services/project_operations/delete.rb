@@ -10,7 +10,7 @@ module ProjectOperations
     def delete_project
       project = current_user.projects.find_by(name: project_name)
 
-      project.delete if project.present?
+      project.destroy if project.present?
     end
 
     private

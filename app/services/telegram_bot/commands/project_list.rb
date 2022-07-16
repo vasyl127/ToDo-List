@@ -30,10 +30,13 @@ module TelegramBot
       end
 
       def in_project
+        value = { keyboard: keyboard.in_project_keyboard }
         steps_controller.next_step
+        project = search_project
+        return value[:text] = formated_project(project, search_costs) if project.present?
 
-        { text: formated_project(search_project, search_costs),
-          keyboard: keyboard.in_project_keyboard }
+        value[:text] = errors.add_errors(project_absent)
+        value
       end
 
       def operation_in_project
@@ -72,10 +75,7 @@ module TelegramBot
       def search_project
         @project_name = message
         params[:store_params].store_value(telegram_id: user_telegram_id, value: message)
-        project = ::ProjectOperations::Show.new(telegram_id: user_telegram_id).return_project(project_name)
-        return errors.add_errors(project_absent) if project.blank?
-
-        project
+        ::ProjectOperations::Show.new(telegram_id: user_telegram_id).return_project(project_name)
       end
 
       def search_projects
