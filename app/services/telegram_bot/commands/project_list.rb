@@ -26,7 +26,7 @@ module TelegramBot
 
       def show_projects
         { text: "#{I18n.t('telegram.messages.projects_list')}:\n",
-          keyboard: keyboard.generate_bottom_buttons(search_projects.pluck(:name)) }
+          keyboard: keyboard.projects_keyboard(search_projects.pluck(:name)) }
       end
 
       def in_project
@@ -40,12 +40,6 @@ module TelegramBot
         case message
         when keyboard.keys[:create_cost]
           create_cost
-        when keyboard.keys[:delete_project]
-          steps_controller.default_steps
-          { text: 'Deleted, maybe ;)', keyboard: keyboard.start_keyboard }
-        when keyboard.keys[:home]
-          steps_controller.default_steps
-          { text: 'Go to home screen', keyboard: keyboard.start_keyboard }
         else
           steps_controller.default_steps
           { text: 'InProgress, maybe ;)', keyboard: keyboard.start_keyboard }
@@ -85,10 +79,7 @@ module TelegramBot
       end
 
       def search_projects
-        projects = ::ProjectOperations::Show.new(telegram_id: user_telegram_id).return_projects
-        return projects if projects.present?
-
-        errors.add_errors(project_absent)
+        ::ProjectOperations::Show.new(telegram_id: user_telegram_id).return_projects
       end
     end
   end

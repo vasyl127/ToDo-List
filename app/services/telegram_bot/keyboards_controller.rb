@@ -39,8 +39,8 @@ module TelegramBot
     end
 
     def projects_keyboard(projects)
-      kb = []
-      projects.each { |project| kb << "📄 #{project.name}" }
+      kb = [keys[:home]]
+      projects.each { |project| kb << project.name } if projects.present?
 
       builder.generate_bottom_buttons kb
     end
