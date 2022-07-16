@@ -3,7 +3,7 @@ module TelegramBot
     class CommandsController
       include ::TelegramBot::Errors
 
-      attr_reader :message, :errors, :answer, :steps_controller, :current_user, :params, :keyboard
+      attr_reader :message, :errors, :answer, :steps_controller, :current_user, :params, :keyboard, :user_telegram_id
 
       def initialize(params)
         @params = params
@@ -58,7 +58,10 @@ module TelegramBot
       end
 
       def delete_project
-        start
+        value = { telegram_id: user_telegram_id, project_name: params[:store_params].store[user_telegram_id] }
+        ::ProjectOperations::Delete.new(value).delete_project
+        steps_controller.default_steps
+        { text: I18n.t('telegram.messages.delete_project'), keyboard: keyboard.start_keyboard }
       end
 
       def share_project

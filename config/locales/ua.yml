@@ -32,4 +32,5 @@ ua:
       project_created: Категорія, успішно створена!
       cost_created: Витрата успішно додана!
       projects_not_found: Категорій не знайдено
+      delete_project: Категорію успішно видалено
       total: Загально

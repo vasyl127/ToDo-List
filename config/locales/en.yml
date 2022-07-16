@@ -32,4 +32,5 @@ en:
       project_created: Project succefuly created!
       cost_created: Cost succefuly created!
       projects_not_found: "Can't found projects!"
+      delete_project: Project has been delete!
       total: Total
