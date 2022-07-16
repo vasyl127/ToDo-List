@@ -35,10 +35,8 @@ module TelegramBot
       end
 
       def create_project
-        project = ::ProjectOperations::Create.new(params).project
-        return I18n.t('telegram.messages.project_created') unless project.errors.any?
-
-        errors.add_errors(project.errors.full_messages)
+        ::ProjectOperations::Create.new(params).project
+        return I18n.t('telegram.messages.project_created') unless errors.any?
       end
     end
   end

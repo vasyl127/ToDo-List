@@ -14,7 +14,7 @@ module ProjectOperations
 
     def create_project
       @project = if project_uniq?
-                   current_user.projects.create(project_params)
+                   created_project
                  else
                    errors.all_errors_messages
                  end
@@ -24,6 +24,14 @@ module ProjectOperations
       return true if current_user.projects.where(project_params).blank?
 
       errors.add_errors I18n.t('telegram.errors.project_uniq')
+      false
+    end
+
+    def created_project
+      value = current_user.projects.create(project_params)
+      errors.add_errors(value.errors.full_messages) if value.errors.any?
+
+      value
     end
 
     def find_user(params)
