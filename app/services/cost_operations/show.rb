@@ -9,7 +9,7 @@ module CostOperations
     end
 
     def return_cost(name)
-      project.costs.find_by(name: name)
+      project.costs.find_by(name: name) if project.present?
     end
 
     def return_costs

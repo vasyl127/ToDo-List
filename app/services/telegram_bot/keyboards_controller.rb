@@ -31,7 +31,9 @@ module TelegramBot
     def secondary_keys_list
       { delete_cost: locale('delete_cost'),
         create_cost: locale('create_cost'),
-        delete_project: locale('delete_project') }
+        delete_project: locale('delete_project'),
+        language_ua: locale('language_ua'),
+        language_en: locale('language_en') }
     end
 
     def start_keyboard
@@ -48,6 +50,12 @@ module TelegramBot
 
     def in_cost_keyboard
       kb = [secondary_keys[:delete_cost], keys[:home]]
+
+      builder.generate_bottom_buttons kb
+    end
+
+    def language_keyboard
+      kb = [[secondary_keys[:language_ua], secondary_keys[:language_en]], keys[:home]]
 
       builder.generate_bottom_buttons kb
     end

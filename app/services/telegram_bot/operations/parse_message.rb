@@ -24,30 +24,6 @@ module TelegramBot
         # method_name = steps_controller.steps_list_name.downcase
         # send(method_name)
       end
-
-      # def projects_list
-      #   ::TelegramBot::Commands::ProjectList.new(params).answer
-      # end
-
-      # def create_project
-      #   ::TelegramBot::Commands::CreateProject.new(params).answer
-      # end
-
-      # def create_cost
-      #   ::TelegramBot::Commands::CreateCost.new(params).answer
-      # end
-
-      # def start
-      #   ::TelegramBot::Commands::Start.new(params).answer
-      # end
-
-      # def default_step
-      #   ::TelegramBot::Commands::Start.new(params).answer
-      # end
-
-      # def it_is_command?
-      #   message.start_with? '/'
-      # end
     end
   end
 end

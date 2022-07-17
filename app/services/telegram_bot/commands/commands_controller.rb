@@ -75,7 +75,8 @@ module TelegramBot
       end
 
       def language
-        start
+        steps_controller.start_language_set if it_is_command?
+        ::TelegramBot::Commands::LanguageSet.new(params).answer
       end
 
       def it_is_command?

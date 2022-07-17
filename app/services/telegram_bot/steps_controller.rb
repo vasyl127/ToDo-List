@@ -8,6 +8,7 @@ module TelegramBot
     CREATE_COST       = { list_name: 'CREATE_COST', steps_list: %w[fill_name save_fill_name] }.freeze
     SHARE_PROJECT     = { list_name: 'SHARE_PROJECT', steps_list: %w[user_list share_with_user] }.freeze
     PREPARE_COST      = { list_name: 'PREPARE_COST', steps_list: %w[in_cost operation_in_cost] }.freeze
+    LANGUAGE          = { list_name: 'LANGUAGE', steps_list: %w[language_list language_set] }.freeze
 
     attr_reader :current_user, :current_step, :steps, :steps_list_name
 
@@ -48,6 +49,10 @@ module TelegramBot
 
     def start_share_project
       first_step SHARE_PROJECT
+    end
+
+    def start_language_set
+      first_step LANGUAGE
     end
 
     def next_step

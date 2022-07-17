@@ -63,8 +63,8 @@ module TelegramBot
     end
 
     def localization
-      return I18n.default_locale if current_user.locale.nil?
-      return I18n.default_locale unless current_user.locale == 'uk'
+      return I18n.default_locale if authentication.locale.nil?
+      return I18n.default_locale unless authentication.locale == 'ua'
 
       I18n.locale = :ua
     end

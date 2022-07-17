@@ -16,12 +16,14 @@ en:
       projects_list: '📑 Projects list'
       create_task: '✅ Add Task'
       tasks_list: '💼 Tasks list'
-      language: '🇺🇦 Language'
+      language: '🇺🇦 Language 🇺🇸'
       create_cost: '✅ Add Cost'
       share_project: '🌐 Share'
       delete_project: '🗑️ Delete Project'
       delete_cost: '🗑️ Delete Cost'
       home: '🏠 Home'
+      language_en: '🇺🇸 English'
+      language_ua: '🇺🇦 Ukranian'
     errors:
       projects_not_found: Can't found categories, but can add new.
       project_uniq: Categorie name must be uniq
@@ -38,4 +40,6 @@ en:
       cost_created: Cost succefuly created!
       delete_project: Categorie has been deleted!
       delete_cost: Cost has been deleted!
+      chose_language: Chose a language, you current language
+      language_set: now your language, press /start for update
       total: Total
