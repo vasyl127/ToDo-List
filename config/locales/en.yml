@@ -14,9 +14,13 @@ en:
     buttons:
       create_project: '✅ Add Project'
       projects_list: '📑 Projects list'
+      create_task: '✅ Add Task'
+      tasks_list: '💼 Tasks list'
+      language: '🇺🇦 Language'
       create_cost: '✅ Add Cost'
       share_project: '🌐 Share'
       delete_project: '🗑️ Delete Project'
+      delete_cost: '🗑️ Delete Cost'
       home: '🏠 Home'
     errors:
       projects_not_found: Can't found categories, but can add new.
@@ -32,5 +36,6 @@ en:
       fill_cost_name: Please enter a cost name, use ':' for price. Example 'Silpo:1400'
       project_created: Categorie succefuly created!
       cost_created: Cost succefuly created!
-      delete_project: Categorie has been delete!
+      delete_project: Categorie has been deleted!
+      delete_cost: Cost has been deleted!
       total: Total

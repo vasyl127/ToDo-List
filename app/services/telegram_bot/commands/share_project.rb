@@ -13,7 +13,7 @@ module TelegramBot
         @steps_controller = params[:steps_controller]
         @user_telegram_id = params[:user_telegram_id]
         @keyboard = params[:keyboard]
-        @project_name = params[:store_params].store[user_telegram_id]
+        @project_name = params[:store_params].store.dig(user_telegram_id, :project_name)
 
         exec_command
       end

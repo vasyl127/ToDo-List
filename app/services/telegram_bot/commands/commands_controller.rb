@@ -57,16 +57,25 @@ module TelegramBot
         ::TelegramBot::Commands::ProjectList.new(params).answer
       end
 
-      def delete_project
-        value = { telegram_id: user_telegram_id, project_name: params[:store_params].store[user_telegram_id] }
-        ::ProjectOperations::Delete.new(value).delete_project
-        steps_controller.default_steps
-        { text: I18n.t('telegram.messages.delete_project'), keyboard: keyboard.start_keyboard }
+      def prepare_cost
+        ::TelegramBot::Commands::PrepareCost.new(params).answer
       end
 
       def share_project
         steps_controller.start_share_project if it_is_command?
         ::TelegramBot::Commands::ShareProject.new(params).answer
+      end
+
+      def create_task
+        start
+      end
+
+      def tasks_list
+        start
+      end
+
+      def language
+        start
       end
 
       def it_is_command?

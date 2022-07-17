@@ -2,10 +2,11 @@ module TelegramBot
   class KeyboardsController
     KEY_FOR_PROJECT = %w[AddCost DeleteProject].freeze
 
-    attr_reader :builder, :keys
+    attr_reader :builder, :keys, :secondary_keys
 
     def initialize
-      @keys = keys_list
+      @keys = primary_keys_list
+      @secondary_keys = secondary_keys_list
       @builder = ::TelegramBot::Keyboard::Builder.new
     end
 
@@ -17,23 +18,36 @@ module TelegramBot
       builder.generate_bottom_buttons(buttons)
     end
 
-    def keys_list
+    def primary_keys_list
       { create_project: locale('create_project'),
         projects_list: locale('projects_list'),
-        create_cost: locale('create_cost'),
+        create_task: locale('create_task'),
+        tasks_list: locale('tasks_list'),
+        language: locale('language'),
         share_project: locale('share_project'),
-        delete_project: locale('delete_project'),
         home: locale('home') }
     end
 
+    def secondary_keys_list
+      { delete_cost: locale('delete_cost'),
+        create_cost: locale('create_cost'),
+        delete_project: locale('delete_project') }
+    end
+
     def start_keyboard
-      kb = [keys[:projects_list], keys[:create_project]]
+      kb = [[keys[:tasks_list], keys[:projects_list]], [keys[:create_task], keys[:create_project]], keys[:language]]
 
       builder.generate_bottom_buttons kb
     end
 
     def in_project_keyboard
-      kb = [keys[:create_cost], keys[:share_project], keys[:delete_project], keys[:home]]
+      kb = [secondary_keys[:create_cost], keys[:share_project], secondary_keys[:delete_project], keys[:home]]
+
+      builder.generate_bottom_buttons kb
+    end
+
+    def in_cost_keyboard
+      kb = [secondary_keys[:delete_cost], keys[:home]]
 
       builder.generate_bottom_buttons kb
     end

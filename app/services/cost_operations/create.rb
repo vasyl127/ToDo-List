@@ -5,7 +5,7 @@ module CostOperations
     def initialize(params)
       @current_user = find_user(params)
       @user_telegram_id = params[:user_telegram_id]
-      @project_name = params[:store_params].store[user_telegram_id]
+      @project_name = params[:store_params].store.dig(user_telegram_id, :project_name)
       @project = find_project
       @cost = project.costs.create(params[:cost_params])
     end

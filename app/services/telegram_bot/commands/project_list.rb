@@ -44,12 +44,19 @@ module TelegramBot
 
       def operation_in_project
         case message
-        when keyboard.keys[:create_cost]
+        when keyboard.secondary_keys[:create_cost]
           create_cost
+        when keyboard.secondary_keys[:delete_project]
+          delete_project
         else
-          steps_controller.default_steps
-          { text: 'InProgress, maybe ;)', keyboard: keyboard.start_keyboard }
+          prepare_cost
         end
+      end
+
+      def prepare_cost
+        params[:store_params].store_value(telegram_id: user_telegram_id, value: { cost_name: message.delete('/') })
+        steps_controller.start_prepare_cost
+        ::TelegramBot::Commands::PrepareCost.new(params).answer
       end
 
       def create_cost
@@ -61,10 +68,18 @@ module TelegramBot
 
       def formated_project(project, costs)
         string = "📄 #{project.name}\n📆 #{project.created_at.strftime('%m.%d.%Y')}\n\n"
-        costs.each { |cost| string += "📈 #{cost.name} : #{cost.title}💸\n" } if costs.present?
+        costs.each { |cost| string += "📈 /#{cost.name} : #{cost.title}💸\n" } if costs.present?
         string += "\n#{I18n.t('telegram.messages.total')}: #{costs_total(costs)}💸"
 
         string
+      end
+
+      def delete_project
+        value = { telegram_id: user_telegram_id,
+                  project_name: params[:store_params].store.dig(user_telegram_id, :project_name) }
+        ::ProjectOperations::Delete.new(value).delete_project
+        steps_controller.default_steps
+        { text: I18n.t('telegram.messages.delete_project'), keyboard: keyboard.start_keyboard }
       end
 
       def search_costs
@@ -77,7 +92,7 @@ module TelegramBot
 
       def search_project
         @project_name = message
-        params[:store_params].store_value(telegram_id: user_telegram_id, value: message)
+        params[:store_params].store_value(telegram_id: user_telegram_id, value: { project_name: message })
         ::ProjectOperations::Show.new(telegram_id: user_telegram_id).return_project(project_name)
       end
 
