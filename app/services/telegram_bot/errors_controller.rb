@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TelegramBot
   class ErrorsController
     attr_reader :errors

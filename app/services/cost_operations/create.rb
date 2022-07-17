@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CostOperations
   class Create
     attr_reader :cost, :current_user, :project, :project_name, :user_telegram_id

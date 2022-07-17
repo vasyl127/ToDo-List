@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TelegramBot
   class Storage
     attr_reader :store

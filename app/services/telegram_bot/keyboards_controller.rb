@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TelegramBot
   class KeyboardsController
     KEY_FOR_PROJECT = %w[AddCost DeleteProject].freeze

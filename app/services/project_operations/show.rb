@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ProjectOperations
   class Show
     attr_reader :project, :current_user

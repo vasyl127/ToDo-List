@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TelegramBot
   module Commands
     class Start

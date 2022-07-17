@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TelegramBot
   module Commands
     class LanguageSet
@@ -24,7 +26,8 @@ module TelegramBot
       end
 
       def language_list
-        { text: "#{I18n.t('telegram.messages.chose_language')}: #{current_language}", keyboard: keyboard.language_keyboard }
+        { text: "#{I18n.t('telegram.messages.chose_language')}: #{current_language}",
+          keyboard: keyboard.language_keyboard }
       end
 
       def language_set

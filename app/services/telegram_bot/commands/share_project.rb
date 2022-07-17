@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module TelegramBot
   module Commands
     class ShareProject
-
       include ::TelegramBot::Errors
 
       attr_reader :errors, :user_telegram_id, :keyboard, :steps_controller, :message, :answer, :project_name, :params
@@ -35,7 +36,7 @@ module TelegramBot
         user = User.find_by(email: user_email)
         UserProject.create(user_id: user.id, project_id: project.id)
 
-        {text: "#{I18n.t('telegram.messages.share_project')} '#{user_email}'", keyboard: keyboard.start_keyboard }
+        { text: "#{I18n.t('telegram.messages.share_project')} '#{user_email}'", keyboard: keyboard.start_keyboard }
       end
 
       def normalize_users

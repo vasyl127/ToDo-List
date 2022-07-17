@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TelegramBot
   module Errors
     def invalid_commands

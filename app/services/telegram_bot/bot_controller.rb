@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TelegramBot
   class BotController
     attr_reader :answer, :message, :errors, :params, :current_user, :steps_controller, :keyboard, :store_params

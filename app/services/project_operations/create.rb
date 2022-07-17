@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ProjectOperations
   class Create
     attr_reader :project, :current_user, :errors, :project_params

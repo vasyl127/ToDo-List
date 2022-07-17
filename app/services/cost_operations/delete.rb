@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CostOperations
   class Delete
     attr_reader :cost, :current_user, :project, :project_name, :cost_name

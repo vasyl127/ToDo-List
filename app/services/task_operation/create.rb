@@ -1,15 +1,17 @@
-  module TaskOperation
-    class Create
-      attr_reader :task
+# frozen_string_literal: true
 
-      def initialize(params)
-        @task = find_user(params).tasks.create(params[:task_params])
-      end
+module TaskOperation
+  class Create
+    attr_reader :task
 
-      private
+    def initialize(params)
+      @task = find_user(params).tasks.create(params[:task_params])
+    end
 
-      def find_user(params)
-        User.find_by(telegram_id: params[:telegram_id]) || User.find_by_id(params[:current_user_id])
-      end
+    private
+
+    def find_user(params)
+      User.find_by(telegram_id: params[:telegram_id]) || User.find_by_id(params[:current_user_id])
     end
   end
+end

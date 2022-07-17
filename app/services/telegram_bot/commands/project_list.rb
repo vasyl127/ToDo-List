@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module TelegramBot
   module Commands
     class ProjectList
-
       include ::TelegramBot::Errors
 
       attr_reader :errors, :user_telegram_id, :keyboard, :steps_controller, :message, :answer, :project_name, :params

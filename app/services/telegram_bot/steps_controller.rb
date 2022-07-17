@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TelegramBot
   class StepsController
     HOME              = { list_name: 'HOME', steps_list: %w[home_screen] }.freeze

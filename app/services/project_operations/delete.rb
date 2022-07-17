@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ProjectOperations
   class Delete
     attr_reader :current_user, :project_name
