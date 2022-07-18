@@ -17,7 +17,7 @@ module TelegramBot
 
     def return_answer
       message_proces
-      return something_wrong_errors if answer.blank?
+      something_wrong_errors if answer.blank? && errors.none?
       return { text: errors.all_errors_messages, keyboard: keyboard.start_keyboard } if errors.any?
 
       answer

@@ -25,6 +25,7 @@ en:
       language_en: '🇺🇸 English'
       language_ua: '🇺🇦 Ukranian'
     errors:
+      error: Errors
       projects_not_found: Can't found categories, but you can add new.
       tasks_not_found: Can't found tasks, but you can add new.
       project_uniq: Categorie name must be uniq

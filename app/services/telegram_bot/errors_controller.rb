@@ -21,7 +21,7 @@ module TelegramBot
     end
 
     def all_errors_messages
-      string = "Errors:\n\n"
+      string = "#{I18n.t('telegram.errors.error')}:\n\n"
       errors.flatten.map { |error| string += "- #{error} \n" }.to_s
 
       string
