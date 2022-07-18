@@ -9,5 +9,9 @@ module TelegramBot
     def project_absent
       I18n.t('telegram.errors.projects_not_found')
     end
+
+    def tasks_absent
+      I18n.t('telegram.errors.tasks_not_found')
+    end
   end
 end

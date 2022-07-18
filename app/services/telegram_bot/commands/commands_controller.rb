@@ -69,11 +69,13 @@ module TelegramBot
       end
 
       def create_task
-        start
+        steps_controller.start_create_task if it_is_command?
+        ::TelegramBot::Commands::CreateTask.new(params).answer
       end
 
       def tasks_list
-        start
+        steps_controller.start_tasks_list if it_is_command?
+        ::TelegramBot::Commands::TasksList.new(params).answer
       end
 
       def language

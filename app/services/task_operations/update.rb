@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Task
-  module Operation
+  module Operations
     module Update
     end
   end

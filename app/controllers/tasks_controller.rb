@@ -22,7 +22,7 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = ::TaskOperation::Create.new(current_user_id: current_user.id, task_params: task_params).task
+    @task = ::TaskOperations::Create.new(current_user_id: current_user.id, task_params: task_params).task
 
     respond_to do |format|
       if @task.errors.empty?

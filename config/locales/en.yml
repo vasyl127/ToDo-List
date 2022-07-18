@@ -25,7 +25,8 @@ en:
       language_en: '🇺🇸 English'
       language_ua: '🇺🇦 Ukranian'
     errors:
-      projects_not_found: Can't found categories, but can add new.
+      projects_not_found: Can't found categories, but you can add new.
+      tasks_not_found: Can't found tasks, but you can add new.
       project_uniq: Categorie name must be uniq
     commands:
       invalid: Commands is invalid
@@ -35,8 +36,10 @@ en:
       projects_list: Categories list
       share_project: Succefuly share categorie with
       fill_project_name: Please enter a categorie name
+      fill_task_name: Please enter a task name
       fill_cost_name: Please enter a cost name, use ':' for price. Example 'Silpo:1400'
       project_created: Categorie succefuly created!
+      task_created: Task succefuly created!
       cost_created: Cost succefuly created!
       delete_project: Categorie has been deleted!
       delete_cost: Cost has been deleted!

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TaskOperation
+module TaskOperations
   class Create
     attr_reader :task
 
@@ -11,7 +11,7 @@ module TaskOperation
     private
 
     def find_user(params)
-      User.find_by(telegram_id: params[:telegram_id]) || User.find_by_id(params[:current_user_id])
+      User.find_by(telegram_id: params[:user_telegram_id]) || User.find_by_id(params[:current_user_id])
     end
   end
 end

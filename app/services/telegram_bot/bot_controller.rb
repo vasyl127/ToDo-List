@@ -59,7 +59,7 @@ module TelegramBot
       name = message.chat.first_name || message.chat.last_name
       { email: "#{name}@def_telegram",
         name: name,
-        password: name,
+        password: 'qwert12345asdfzxcv',
         locale: message.from.language_code,
         telegram_id: message.chat.id }
     end

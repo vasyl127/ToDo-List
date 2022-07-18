@@ -11,6 +11,8 @@ module TelegramBot
     SHARE_PROJECT     = { list_name: 'SHARE_PROJECT', steps_list: %w[user_list share_with_user] }.freeze
     PREPARE_COST      = { list_name: 'PREPARE_COST', steps_list: %w[in_cost operation_in_cost] }.freeze
     LANGUAGE          = { list_name: 'LANGUAGE', steps_list: %w[language_list language_set] }.freeze
+    CREATE_TASK       = { list_name: 'CREATE_TASK', steps_list: %w[fill_name save_fill_name] }.freeze
+    TASKS_LIST        = { list_name: 'TASKS_LIST', steps_list: %w[show_tasks in_task operation_in_task] }.freeze
 
     attr_reader :current_user, :current_step, :steps, :steps_list_name
 
@@ -27,6 +29,14 @@ module TelegramBot
       update_params(current_step: 'home_screen',
                     list_name: HOME[:list_name],
                     steps_list: HOME[:steps_list])
+    end
+
+    def start_create_task
+      first_step CREATE_TASK
+    end
+
+    def start_tasks_list
+      first_step TASKS_LIST
     end
 
     def start_create_project
