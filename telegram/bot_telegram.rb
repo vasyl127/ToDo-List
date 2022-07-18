@@ -20,6 +20,7 @@ class BotTelegram
       send_message(message.chat.id, bot_controller.return_answer)
     rescue StandardError => e
       puts e.full_message
+      logger(message: message, errors: e)
     end
   end
 
@@ -35,5 +36,12 @@ class BotTelegram
     return bot.api.sendMessage(chat_id: chat_id, text: message) if kb.blank?
 
     bot.api.sendMessage(chat_id: chat_id, text: message, reply_markup: kb)
+  end
+
+  def logger(message:, errors:)
+    value = "TG_id: #{message.chat.id}\nName: #{message.chat.first_name if message.chat.first_name.present?}\n"
+    value += "Message: #{message.text}\nTime: #{Time.now}\nErrors: #{errors.full_message}\n"
+    value += '*' * 100
+    ActiveSupport::Logger.new('log/telegram_bot.log').info(value)
   end
 end
