@@ -1,7 +1,9 @@
-<div class="card" style="width: 18rem;">
+<div class="card mb-2" style="width: 40rem;">
   <div class="card-body">
     <h5 class="card-title"><%= task.name %></h5>
-    <p class="card-text"><%= task.text %></p>
-    <%= link_to 'More', task, class: 'btn btn-primary'%>
+    <p class="card-text text-truncate"><%= task.text %></p>
+    <div class= 'd-md-flex justify-content-md-end'>
+    <%= link_to 'More', task, class: 'btn btn-primary '%>
+    </div>
   </div>
 </div>
