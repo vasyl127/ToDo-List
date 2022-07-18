@@ -63,7 +63,7 @@ module TelegramBot
     end
 
     def tasks_keyboard
-      kb = [keys[:home]]
+      kb = [keys[:create_task], keys[:home]]
 
       builder.generate_bottom_buttons kb
     end

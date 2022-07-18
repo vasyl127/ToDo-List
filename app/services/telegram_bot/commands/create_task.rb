@@ -37,8 +37,10 @@ module TelegramBot
       end
 
       def create_task
-        ::TaskOperations::Create.new(params).task
-        return I18n.t('telegram.messages.task_created') unless errors.any?
+        task = ::TaskOperations::Create.new(params).task
+        return I18n.t('telegram.messages.task_created') unless task.errors.any?
+
+        errors.add_errors(task.errors.full_messages)
       end
     end
   end
