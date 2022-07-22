@@ -14,7 +14,7 @@ module TelegramBot
         @errors = params[:errors]
         @steps_controller = params[:steps_controller]
         @keyboard = params[:keyboard]
-        @cost = find_cost
+        @cost = find_cost unless params[:store_params].store.nil?
 
         exec_command
       end
@@ -51,6 +51,8 @@ module TelegramBot
       end
 
       def prepare_cost
+        return if cost.blank?
+
         "📈 #{cost.name}\n📆 #{cost.created_at.strftime('%m.%d.%Y')}\n💸 #{cost.title}"
       end
 
