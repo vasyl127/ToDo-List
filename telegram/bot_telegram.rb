@@ -20,7 +20,7 @@ class BotTelegram
       send_message(message.chat.id, bot_controller.return_answer)
     rescue StandardError => e
       logger(message: message, errors: e)
-      send_errors_for_admin(chat_id)
+      send_errors_for_admin(message.chat.id)
     end
   end
 
@@ -48,5 +48,4 @@ class BotTelegram
   def send_errors_for_admin(chat_id)
     bot.api.sendDocument(chat_id: chat_id, document: Faraday::UploadIO.new('../log/telegram_bot.log', 'text/plain'))
   end
-
 end
