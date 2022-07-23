@@ -2,7 +2,8 @@
 
 module TelegramBot
   class BotController
-    attr_reader :answer, :message, :errors, :params, :current_user, :steps_controller, :keyboard, :store_params
+    attr_reader :answer, :message, :errors, :params, :current_user,
+                :steps_controller, :keyboard, :store_params, :custom_answer
 
     def initialize(message:, store_params:)
       @message = message
@@ -20,6 +21,7 @@ module TelegramBot
       something_wrong_errors if answer.blank? && errors.none?
       return { text: errors.all_errors_messages, keyboard: keyboard.start_keyboard } if errors.any?
 
+      answer[:text].insert(0, custom_answer) if custom_answer.present?
       answer
     end
 
@@ -57,9 +59,12 @@ module TelegramBot
 
     def user_parmas
       name = message.chat.first_name || message.chat.last_name
-      { email: "#{name}@def_telegram",
+      user_pass = SecureRandom.hex(5)
+      email = "#{SecureRandom.hex(3)}@default.telegram"
+      @custom_answer = "#{I18n.t('telegram.messages.create_user')}\n\nlogin: #{email}\npassword: #{user_pass}\n\n"
+      { email: email,
         name: name,
-        password: 'qwert12345asdfzxcv',
+        password: user_pass,
         locale: message.from.language_code,
         telegram_id: message.chat.id }
     end

@@ -15,12 +15,15 @@ class BotTelegram
   end
 
   def run
+    puts 'Bot started'
+    puts '*' * 30
     bot.listen do |message|
       @bot_controller = TelegramBot::BotController.new(message: message, store_params: store_params)
       send_message(message.chat.id, bot_controller.return_answer)
     rescue StandardError => e
-      logger(message: message, errors: e)
-      send_errors_for_admin(message.chat.id)
+      puts e
+      # logger(message: message, errors: e)
+      # send_errors_for_admin
     end
   end
 
@@ -39,13 +42,19 @@ class BotTelegram
   end
 
   def logger(message:, errors:)
-    value = "TG_id: #{message.chat.id}\nName: #{message.chat.first_name if message.chat.first_name.present?}\n"
+    return if message.blank?
+
+    value = '*' * 100
+    value += "\nTG_id: #{message.chat.id}\nName: #{message.chat.first_name if message.chat.first_name.present?}\n"
     value += "Message: #{message.text}\nTime: #{Time.now}\nErrors: #{errors.full_message}\n"
     value += '*' * 100
-    ActiveSupport::Logger.new('log/telegram_bot.log').info(value)
+    puts value
+    # ActiveSupport::Logger.new('log/telegram_bot.log').info(value)
   end
 
-  def send_errors_for_admin(chat_id)
-    bot.api.sendDocument(chat_id: chat_id, document: Faraday::UploadIO.new('../log/telegram_bot.log', 'text/plain'))
+  def send_errors_for_admin
+    return unless File.exist?('../log/telegram_bot.log')
+
+    bot.api.sendDocument(chat_id: 397034025, document: Faraday::UploadIO.new('../log/telegram_bot.log', 'text/plain'))
   end
 end

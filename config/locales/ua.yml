@@ -299,6 +299,7 @@ ua:
       invalid: Команда не вірна
     messages:
       home: Домашня сторінка
+      create_user: Користувача успішно створено, за цими кредами ви можете відвідати сайт 'https://tgbot-todolist.herokuapp.com/'.
       something: Упссс, щось пішло не так
       projects_list: Список категорій
       share_project: Успішно поширино з користувачем

@@ -28,7 +28,7 @@
                 <% end %>
               </li>
               <% if user_signed_in? %>
-                <%= link_to current_user.email, destroy_user_session_path, class: 'btn btn-outline-warning' %>
+                <%= link_to current_user.name.present? ? current_user.name : current_user.email , destroy_user_session_path, class: 'btn btn-outline-warning' %>
               <% else %>
                 <li class="nav-item">
                 <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-outline-warning' %>
