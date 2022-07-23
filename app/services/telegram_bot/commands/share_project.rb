@@ -48,7 +48,7 @@ module TelegramBot
       end
 
       def all_users
-        User.all.pluck(:email) - [current_user.email]
+        User.all.pluck(:name) - [current_user.name]
       end
 
       def project

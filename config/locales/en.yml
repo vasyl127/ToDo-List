@@ -34,6 +34,7 @@ en:
     messages:
       home: It is home screen
       something: Something went wrong!
+      create_user: User has been created, you can visit 'https://tgbot-todolist.herokuapp.com/' with this credentinal.
       projects_list: Categories list
       share_project: Succefuly share categorie with
       fill_project_name: Please enter a categorie name
