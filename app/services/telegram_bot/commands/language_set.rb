@@ -44,6 +44,7 @@ module TelegramBot
 
       def update_locale(value)
         current_user.update(locale: value)
+        I18n.locale = value.to_sym
       end
 
       def current_language

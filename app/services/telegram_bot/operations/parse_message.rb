@@ -21,10 +21,6 @@ module TelegramBot
 
       def check_message
         ::TelegramBot::Commands::CommandsController.new(params).answer
-        # return ::TelegramBot::Commands::CommandsController.new(params).answer if it_is_command?
-
-        # method_name = steps_controller.steps_list_name.downcase
-        # send(method_name)
       end
     end
   end
