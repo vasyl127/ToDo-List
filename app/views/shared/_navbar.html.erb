@@ -13,10 +13,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
+              <li class='nav-item'>
+                <%= link_to 'Tasks', tasks_path, class:'btn btn-outline-warning me-2' %>
+              </li>
+              <li class='nav-item'>
+                <%= link_to 'Projects', projects_path, class:'btn btn-outline-warning me-2' %>
+              </li>
+
               <li class="nav-item">
                 <% I18n.available_locales.each do |locale| %>
                   <% if I18n.locale != locale %>
-                    <%= link_to t(locale), root_path(locale: locale), class: 'btn btn-outline-warning' %>
+                    <%= link_to t(locale), root_path(locale: locale), class: 'btn btn-outline-warning me-2' %>
                   <% end %>
                 <% end %>
               </li>
